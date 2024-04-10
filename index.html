@@ -1,0 +1,58 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOS Signal Generator</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+    </style>
+</head>
+<body>
+    <h1>SOS Signal Generator</h1>
+    <p>Click the button below to activate the SOS signal using your mobile torch.</p>
+    <button id="sosButton" onclick="sendSOS()">Send SOS Signal</button>
+    <script>
+        function sendSOS() {
+    if ('torch' in navigator) { // Check if torch functionality is supported
+        navigator.torch.activate(); // Activate the torch
+        // Send SOS signal by turning the torch on and off in the Morse code pattern
+        setTimeout(function() {navigator.torch.deactivate();}, 1000);
+        setTimeout(function() {navigator.torch.activate();}, 3000);
+        setTimeout(function() {navigator.torch.deactivate();}, 4000);
+        setTimeout(function() {navigator.torch.activate();}, 6000);
+        setTimeout(function() {navigator.torch.deactivate();}, 7000);
+        setTimeout(function() {navigator.torch.activate();}, 9000);
+        setTimeout(function() {navigator.torch.deactivate();}, 10000);
+        setTimeout(function() {navigator.torch.activate();}, 12000);
+        setTimeout(function() {navigator.torch.deactivate();}, 13000);
+    } else {
+        alert("Your device doesn't support torch functionality.");
+    }
+}
+
+    </script>
+</body>
+</html>
